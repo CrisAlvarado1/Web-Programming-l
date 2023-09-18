@@ -6,6 +6,7 @@
     <title>Current date and time</title>
 </head>
 <body>
+    <!--Additional option, where html code with the .php extension is used:-->
     <?php
         include('datetime.php');
     ?>

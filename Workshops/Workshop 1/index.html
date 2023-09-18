@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Current date and time</title>
 </head>
 <body>
-    <h1>Fecha y hora actual:</h1>
-    <p><b>La fecha y hora actual es: 19/09/2023 8:15:00</b></p>
-    <!--Al solo utilizar html, se vuelve estático-->
+    <!--First way to see the php from the html:-->
+    <iframe src="datetime.php" width="100%" frameborder="0" height="100px"></iframe> 
+
+    <!--Second way where a form is used to go to the .php:-->
+    <form action="datetime.php" method="post">
+        <h2>Ver fecha y hora actual desde php</h2>
+        <input type="submit" value="Mostrar fecha y hora">
+    </form>
 </body>
 </html>
