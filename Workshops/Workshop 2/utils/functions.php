@@ -19,17 +19,16 @@ function getProvinces() {
 }
 
 /**
- *  Get the specific province name from the database
+ *  Get the specific name of the province from the database
  */
 function getProvince($id) {
-  $provinces = getProvinces();
-  $provinceName = "";
-  foreach ($provinces as $province) {
-    if ($province['id'] == $id) {
-      $provinceName = $province['name'];
-    }
-  }
-  
+  $conn = getConnection();
+  $sql = "SELECT name FROM `provinces` WHERE id = $id;";
+
+  $result = mysqli_query($conn, $sql);
+  $row = $result->fetch_assoc();
+  $provinceName = $row['name'];
+
   return $provinceName;
 }
 
