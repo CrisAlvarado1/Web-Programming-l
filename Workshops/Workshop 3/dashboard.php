@@ -1,5 +1,6 @@
 <?php
   include("inc/validateSession.php");
+  // Variables for the navbar:
   $message = "Bienvenido";
   $activePage = "dashboard";
 ?>
@@ -15,8 +16,10 @@
 </head>
 <body>
   <?php include('inc/nav.php'); ?>
-  <div class="container text-center my-4">
-    <h1>Dashboard</h1>
+  <div class="container">
+    <div class="container text-center my-4">
+      <h1>Dashboard</h1>
+    </div>
   </div>
 </body>
 </html>

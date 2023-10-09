@@ -2,6 +2,7 @@
     include("../inc/validateSession.php");
     include("../utils/functions.php");
     $users = getUsers();    // Get the users of the query
+    // Variables for the navbar:
     $message = "Usuario";
     $activePage = "users";
 ?>
@@ -43,6 +44,7 @@
                         <td> <?php echo "".ucfirst($user['role']); ?> </td>
                         <td>
                             <div class="d-flex justify-content-around">
+                                <!--Link to edit or delete the user, using the user's ID -->
                                 <a class="btn btn-secondary btn-sm" href="edit.php?id=<?php echo "".$user['id']; ?>">Edit</a> 
                                 <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo "".$user['id']; ?>">Delete</a>
                             </div> 

@@ -72,10 +72,10 @@ function saveUser($user)
 }
 
 /**
-* Delete a specific user from the database by their ID.
-* 
-* @param $idUseris the unique identifier of the user to be deleted.
-*/
+ * Delete a specific user from the database by their ID.
+ * 
+ * @param $idUseris the unique identifier of the user to be deleted.
+ */
 function deleteUser($idUser)
 {
   $sql = "DELETE FROM `users` WHERE id = " . $idUser . ";";
@@ -101,10 +101,10 @@ function getUser($idUser)
 }
 
 /**
-* Update user information in the database.
-* 
-* @param array $user is an associative array containing user information.
-*/
+ * Update user information in the database.
+ * 
+ * @param array $user is an associative array containing user information.
+ */
 function updateUser($user)
 {
   // Extract values from the $user array and construct the SQL query
@@ -113,7 +113,7 @@ function updateUser($user)
   `role` = '{$user['role']}' WHERE id = {$user['id']};";
 
   $conn = getConnection();
-  mysqli_query($conn, $sql);  
+  mysqli_query($conn, $sql);
   return true;
 }
 

@@ -1,6 +1,6 @@
 <?php
   include('../inc/validateSession.php');
-  
+
   include('../utils/functions.php');
   $provinces = getProvinces();
 
@@ -9,21 +9,29 @@
     $editUser = getUser($id);
   }
 
+  // Variables for the navbar:
+  $message = "Usuario";
+  $activePage = "users";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Users</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Users</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
+
 <body>
-    <div class="container-fluid">
-        <h1 class="display-4">Edit Users</h1>
-        <p class="lead">Editing editUser</p>
-        <hr class="my-4">
+  <?php include('../inc/nav.php'); ?>
+  <div class="container-fluid">
+    <div class="text-center my-2">
+      <h1 class="display-4">Edit Users</h1>
+      <p class="lead">Editing an existing User</p>
+      <hr>
+    </div>
     <form method="post" action="sendUser.php">
       <input type="hidden" name="idUser" value="<?php echo $editUser['id']; ?>">
       <div class="form-group">
@@ -42,7 +50,7 @@
         <label for="province">Provincia</label>
         <select id="province" class="form-control" name="province">
           <?php
-          foreach($provinces as $province) {
+          foreach ($provinces as $province) {
             $id = $province['id'];
             $nameProvince = $province['name'];
             $selected = ($id === $editUser['province_id']) ? 'selected' : '';
@@ -62,8 +70,9 @@
         <label for="password">Password</label>
         <input id="password" class="form-control" type="text" name="password" value="<?php echo $editUser['password']; ?>">
       </div>
-      <button type="submit" class="btn btn-primary"> Edit </button>
+      <button type="submit" class="btn btn-primary"> Edit the user </button>
     </form>
-    </div>
+  </div>
 </body>
+
 </html>
