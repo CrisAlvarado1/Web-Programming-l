@@ -36,19 +36,19 @@
       <input type="hidden" name="idUser" value="<?php echo $editUser['id']; ?>">
       <div class="form-group">
         <label for="first-name">First Name</label>
-        <input id="first-name" class="form-control" type="text" name="firstName" value="<?php echo $editUser['firstname']; ?>">
+        <input id="first-name" class="form-control" type="text" name="firstName" value="<?php echo $editUser['firstname']; ?>" required>
       </div>
       <div class="form-group">
         <label for="last-name">Last Name</label>
-        <input id="last-name" class="form-control" type="text" name="lastName" value="<?php echo $editUser['lastname']; ?>">
+        <input id="last-name" class="form-control" type="text" name="lastName" value="<?php echo $editUser['lastname']; ?>" required>
       </div>
       <div class="form-group">
         <label for="email">Email Address</label>
-        <input id="email" class="form-control" type="text" name="email" value="<?php echo $editUser['email']; ?>">
+        <input id="email" class="form-control" type="text" name="email" value="<?php echo $editUser['email']; ?>" required>
       </div>
       <div class="form-group">
         <label for="province">Provincia</label>
-        <select id="province" class="form-control" name="province">
+        <select id="province" class="form-control" name="province" required>
           <?php
           foreach ($provinces as $province) {
             $id = $province['id'];
@@ -61,14 +61,14 @@
       </div>
       <div class="form-group">
         <label for="roles">Role</label>
-        <select id="roles" class="form-control" name="role">
+        <select id="roles" class="form-control" name="role" required>
           <option value="user" <?php if ($editUser['role'] === 'user') echo 'selected'; ?>>User</option>
           <option value="admin" <?php if ($editUser['role'] === 'admin') echo 'selected'; ?>>Administrator</option>
         </select>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input id="password" class="form-control" type="text" name="password" value="<?php echo $editUser['password']; ?>">
+        <input id="password" class="form-control" type="text" name="password" value="<?php echo $editUser['password']; ?>" required>
       </div>
       <button type="submit" class="btn btn-primary"> Edit the user </button>
     </form>

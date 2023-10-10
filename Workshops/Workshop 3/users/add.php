@@ -28,19 +28,19 @@
     <form method="post" action="sendUser.php">
       <div class="form-group">
         <label for="first-name">First Name</label>
-        <input id="first-name" class="form-control" type="text" name="firstName">
+        <input id="first-name" class="form-control" type="text" name="firstName" required>
       </div>
       <div class="form-group">
         <label for="last-name">Last Name</label>
-        <input id="last-name" class="form-control" type="text" name="lastName">
+        <input id="last-name" class="form-control" type="text" name="lastName" required>
       </div>
       <div class="form-group">
         <label for="email">Email Address</label>
-        <input id="email" class="form-control" type="text" name="email">
+        <input id="email" class="form-control" type="text" name="email" required>
       </div>
       <div class="form-group">
         <label for="province">Provincia</label>
-        <select id="province" class="form-control" name="province">
+        <select id="province" class="form-control" name="province" required>
           <?php
           foreach ($provinces as $province) {
             $id = $province['id'];
@@ -52,14 +52,14 @@
       </div>
       <div class="form-group">
         <label for="roles">Role</label>
-        <select id="roles" class="form-control" name="role">
+        <select id="roles" class="form-control" name="role" required>
           <option value="user">User</option>
           <option value="admin">Administrator</option>
         </select>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input id="password" class="form-control" type="password" name="password">
+        <input id="password" class="form-control" type="password" name="password" required>
       </div>
       <button type="submit" class="btn btn-primary"> Add new user </button>
     </form>

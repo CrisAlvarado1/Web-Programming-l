@@ -19,6 +19,7 @@ function getProvinces()
 
   $result = mysqli_query($conn, $sql);
   $provinces = $result->fetch_all(MYSQLI_ASSOC);
+  $conn->close();
 
   return $provinces;
 }
@@ -34,6 +35,7 @@ function getProvince($id)
   $result = mysqli_query($conn, $sql);
   $row = $result->fetch_assoc();
   $provinceName = $row['name'];
+  $conn->close();
 
   return $provinceName;
 }
@@ -50,6 +52,7 @@ function getUsers()
 
   $result = mysqli_query($conn, $sql);
   $users = $result->fetch_all(MYSQLI_ASSOC);
+  $conn->close();
 
   return $users;
 }
@@ -68,6 +71,8 @@ function saveUser($user)
 
   $conn = getConnection();
   mysqli_query($conn, $sql);
+  $conn->close();
+
   return true;
 }
 
@@ -81,6 +86,8 @@ function deleteUser($idUser)
   $sql = "DELETE FROM `users` WHERE id = " . $idUser . ";";
   $conn = getConnection();
   mysqli_query($conn, $sql);
+  $conn->close();
+  
   return true;
 }
 
@@ -96,6 +103,7 @@ function getUser($idUser)
 
   $result = mysqli_query($conn, $sql);
   $user = $result->fetch_all(MYSQLI_ASSOC);
+  $conn->close();
 
   return ($user) ? $user[0] : null;
 }
@@ -114,6 +122,8 @@ function updateUser($user)
 
   $conn = getConnection();
   mysqli_query($conn, $sql);
+  $conn->close();
+
   return true;
 }
 
@@ -132,5 +142,6 @@ function authenticate($firstName, $password)
   }
   $results = $result->fetch_array();
   $conn->close();
+
   return $results;
 }

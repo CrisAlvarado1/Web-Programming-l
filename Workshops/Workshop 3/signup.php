@@ -28,19 +28,19 @@ $provinces = getProvinces();
                         <form method="post" action="registerUser.php" class="form-inline" role="form">
                             <div class="form-group ">
                                 <label for="first-name">First Name (Username)</label>
-                                <input id="first-name" class="form-control my-3 py-2" type="text" name="firstName">
+                                <input id="first-name" class="form-control my-3 py-2" type="text" name="firstName" required>
                             </div>
                             <div class="form-group">
                                 <label for="last-name">Last Name</label>
-                                <input id="last-name" class="form-control my-3 py-2" type="text" name="lastName">
+                                <input id="last-name" class="form-control my-3 py-2" type="text" name="lastName" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email Address</label>
-                                <input id="email" class="form-control my-3 py-2" type="text" name="email">
+                                <input id="email" class="form-control my-3 py-2" type="text" name="email" required>
                             </div>
                             <div class="form-group">
                                 <label for="province">Province</label>
-                                <select id="province" class="form-control my-3 py-2" name="province">
+                                <select id="province" class="form-control my-3 py-2" name="province" required>
                                     <?php
                                     foreach ($provinces as $province) {
                                         $id = $province['id'];
@@ -52,13 +52,13 @@ $provinces = getProvinces();
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input id="password" class="form-control my-2 py-2" type="password" name="password">
+                                <input id="password" class="form-control my-2 py-2" type="password" name="password" required>
                             </div>
                             <input type="hidden" name="role" value="user">
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"> Sign up </button>
                             </div>
-                            <div class="text-center my-1">
+                            <div class="text-center my-1 py-1">
                                 <a href="/Workshop%203/index.php" class="link-primary">Already have an account?</a>
                             </div>
                         </form>
