@@ -153,7 +153,7 @@ function authenticate($firstName, $password)
 */
 function setLoginDateTime($idUser) {
   date_default_timezone_set('America/Mexico_City');
-  $dateTime = date('Y-m-d H:i:s');
+  $dateTime = (new DateTime())->format('Y-m-d H:i:s');
 
   $sql = "UPDATE `users` SET `last_login_datetime` = '$dateTime' 
   WHERE id = $idUser;";
