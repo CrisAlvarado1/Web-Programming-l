@@ -7,4 +7,3 @@ function getConnection() {
     $connection = mysqli_connect('localhost', 'root', '', 'php_web');
     return $connection;
 }
-

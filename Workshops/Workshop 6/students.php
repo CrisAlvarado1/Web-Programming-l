@@ -2,7 +2,7 @@
 if ($argc == 2) {
     if (is_numeric($argv[1])) {
         include_once('functions.php');
-        $limit = $argv[1];
+        $limit = round($argv[1]); // If the number is decimal, round to the nearest number.
 
         class Student
         {
@@ -21,7 +21,7 @@ if ($argc == 2) {
                 $this->age = $age;
             }
 
-            // Retrieve a list of students from the database.
+            // Retrieve a limit list of students from the database, the limit is based on the parameter of the script.
             public static function getStudents($limit)
             {
                 $conn = getConnection();
@@ -46,7 +46,7 @@ if ($argc == 2) {
                 echo $this->id . ", " . $this->name . ", " . $this->lastName . ", " . $this->cedula . ", " . $this->age;
             }
         }
-        // Due to being a static method, there's no need for an instance to access the method
+        // Get a specific number of students from the database
         $studentObjects = Student::getStudents($limit);
 
         if (!empty($studentObjects)) {
@@ -57,5 +57,9 @@ if ($argc == 2) {
         } else {
             echo "No hay estudiantes disponibles para mostrar" . PHP_EOL;
         }
+    } else {
+        echo "El parámetro que digitaste no es numerico.";
     }
+} else {
+    echo "No has digitado el parámetro correcto.";
 }
