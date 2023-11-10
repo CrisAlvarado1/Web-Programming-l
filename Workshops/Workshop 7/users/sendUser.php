@@ -29,7 +29,7 @@ if ($_POST && $_REQUEST['firstName'] && $_REQUEST['password'] && $_REQUEST['role
   } else {
     $user['urlImage'] = "";
   }
-  print_r($user);
+
   $database = new databaseManager();
 
   // If the request brings the id, it means that it is being edited.

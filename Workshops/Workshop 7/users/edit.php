@@ -1,17 +1,17 @@
 <?php
-  include('../inc/validateSession.php');
-  include('../utils/functions.php');
-  
-  $provinces = getProvinces();
+include('../inc/validateSession.php');
+include('../utils/functions.php');
 
-  if ($_GET) {
-    $id = $_GET['id'];
-    $editUser = getUser($id);
-  }
+$provinces = getProvinces();
 
-  // Variables for the navbar:
-  $message = "Usuario";
-  $activePage = "users";
+if ($_GET) {
+  $id = $_GET['id'];
+  $editUser = getUser($id);
+}
+
+// Variables for the navbar:
+$message = "Usuario";
+$activePage = "users";
 
 ?>
 <!DOCTYPE html>

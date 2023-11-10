@@ -75,3 +75,15 @@ function moveImage($tmpNameImage, $targetFile)
     return $flag;
   }
 }
+
+function deleteImage($imagePath)
+{
+  $imagePath = "../" . $imagePath;
+
+  if (file_exists($imagePath)) {
+    unlink($imagePath);
+    return true;
+  } else {
+    return true;
+  }
+}

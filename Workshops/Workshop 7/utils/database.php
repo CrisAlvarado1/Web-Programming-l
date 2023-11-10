@@ -120,4 +120,18 @@ class databaseManager
     {
         mysqli_close($this->connection);
     }
+
+    public function getUserPathImage($userId)
+    {
+        $sql = "SELECT url_image FROM `users` WHERE id = '{$userId}';";
+        $result = $this->connection->query($sql);
+
+        if ($this->connection->connect_errno) {
+            return false;
+        }
+
+        $row = $result->fetch_row();
+        
+        return $row ? $row[0] : null;
+    }
 }
