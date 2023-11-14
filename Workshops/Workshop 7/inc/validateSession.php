@@ -4,5 +4,5 @@ session_start();
 $user = $_SESSION['user'];
 
 if (!$user) {
-  header('Location: /Workshop%204/index.php');
+  header('Location: /Workshop%207/index.php');
 }

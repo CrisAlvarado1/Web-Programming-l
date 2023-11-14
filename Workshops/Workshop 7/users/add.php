@@ -1,7 +1,10 @@
 <?php
-include('../inc/validateSession.php');
-include('../utils/functions.php');
-$provinces = getProvinces();
+include_once('../inc/validateSession.php');
+include_once('../utils/database.php');
+
+$database = new databaseManager();
+$provinces = $database->getProvinces();
+$database->closeConnection();
 // Variables for the navbar:
 $message = "Usuario";
 $activePage = "users";

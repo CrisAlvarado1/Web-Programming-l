@@ -1,6 +1,5 @@
 <?php
 include_once("../inc/validateSession.php");
-include_once("../utils/functions.php");
 include_once("../utils/database.php");
 
 $database = new databaseManager();
@@ -39,13 +38,13 @@ $activePage = "users";
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($users as $user) { ?>
+                <?php foreach ($users as $user) : ?>
                     <tr>
                         <!-- Obtain basic information of the users -->
                         <td> <?php echo "" . $user['firstname']; ?> </td>
                         <td> <?php echo "" . $user['lastname']; ?> </td>
                         <td> <?php echo "" . $user['email']; ?> </td>
-                        <td> <?php echo "" . getProvince($user['province_id']); ?> </td>
+                        <td> <?php echo "" . $database->getProvince($user['province_id']); ?> </td>
                         <td> <?php echo "" . ucfirst($user['role']); ?> </td>
                         <td>
                             <div class="d-flex justify-content-around">
@@ -55,7 +54,10 @@ $activePage = "users";
                             </div>
                         </td>
                     </tr>
-                <?php } ?>
+                <?php
+                endforeach;
+                $database->closeConnection();
+                ?>
             </tbody>
         </table>
         <br>

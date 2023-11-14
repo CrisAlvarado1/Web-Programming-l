@@ -3,6 +3,10 @@
 class databaseManager
 {
     private $connection;
+    private const DB_HOST = 'localhost';
+    private const DB_USER = 'root';
+    private const DB_PASSWORD = '';
+    private const DB_NAME = 'php_web';
 
     public function __construct()
     {
@@ -14,7 +18,7 @@ class databaseManager
      */
     private function getConnection()
     {
-        return mysqli_connect('localhost', 'root', '', 'php_web');
+        return mysqli_connect(self::DB_HOST, self::DB_USER, self::DB_PASSWORD, self::DB_NAME);
     }
 
     /**
@@ -73,7 +77,7 @@ class databaseManager
         // Extract values from the $user array and construct the SQL query
         $sql = "UPDATE `users` SET `firstname` = '{$user['firstName']}', `lastname` = '{$user['lastName']}',
             `email` = '{$user['email']}', `province_id` = {$user['province_id']}, `password` = '{$user['password']}',
-            `role` = '{$user['role']}', `url_image` = '{$user['urlImage']}' WHERE id = {$user['id']};";
+            `role` = '{$user['role']}' WHERE id = {$user['id']};";
 
         mysqli_query($this->connection, $sql);
 
@@ -121,6 +125,13 @@ class databaseManager
         mysqli_close($this->connection);
     }
 
+    /**
+     * Retrieve the image URL associated with a specific user.
+     *
+     * @param int $userId The unique identification of the user in the database.
+     *
+     * @return string|null The image URL if it exists, or null if no image URL is found.
+     */
     public function getUserPathImage($userId)
     {
         $sql = "SELECT url_image FROM `users` WHERE id = '{$userId}';";
@@ -131,7 +142,46 @@ class databaseManager
         }
 
         $row = $result->fetch_row();
-        
+
         return $row ? $row[0] : null;
+    }
+
+    /**
+     *  Retrieves all the provinces from the database
+     */
+    function getProvinces()
+    {
+        $sql = "SELECT * FROM `provinces`;";
+        $result = mysqli_query($this->connection, $sql);
+        $provinces = $result->fetch_all(MYSQLI_ASSOC);
+
+        return $provinces;
+    }
+
+    /**
+     *  Retrieves the specific province name from the database
+     */
+    function getProvince($id)
+    {
+        $sql = "SELECT * FROM `provinces` WHERE id = $id;";
+        $result = mysqli_query($this->connection, $sql);
+        $row = $result->fetch_assoc();
+        $provinceName = $row['name'];
+
+        return $provinceName;
+    }
+
+    /**
+     * Retrieve a specific user's information from the database by their ID.
+     *
+     * @param $idUser is the unique identifier of the user.
+     */
+    function getUser($idUser)
+    {
+        $sql = "SELECT * FROM `users` WHERE id = " . $idUser . ";";
+        $result = mysqli_query($this->connection, $sql);
+        $user = $result->fetch_all(MYSQLI_ASSOC);
+
+        return ($user) ? $user[0] : null;
     }
 }

@@ -1,14 +1,16 @@
 <?php
-include('../inc/validateSession.php');
-include('../utils/functions.php');
+include_once('../inc/validateSession.php');
+include_once('../utils/database.php');
 
-$provinces = getProvinces();
+$database = new databaseManager();
+$provinces = $database->getProvinces();
 
 if ($_GET) {
   $id = $_GET['id'];
-  $editUser = getUser($id);
+  $editUser = $database->getUser($id);
 }
 
+$database->closeConnection();
 // Variables for the navbar:
 $message = "Usuario";
 $activePage = "users";

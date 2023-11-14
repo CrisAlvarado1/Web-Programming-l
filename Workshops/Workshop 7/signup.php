@@ -1,6 +1,9 @@
 <?php
-include('utils/functions.php');
-$provinces = getProvinces();
+include_once('utils/database.php');
+
+$database = new databaseManager();
+$provinces = $database->getProvinces();
+$database->closeConnection();
 ?>
 <!DOCTYPE html>
 <html lang="en">
